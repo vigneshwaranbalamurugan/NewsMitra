@@ -35,19 +35,19 @@ const Hero: React.FC = () => {
   }, []);
 
   const typingTexts = [
-    "Ask me about India's latest news",
     "नमस्कार, भारत की नवीनतम खबरों के बारे में पूछें",
+    "Ask me about India's latest news",
     "Elections, Sports, Economy - I'm updated on it all"
   ];
 
   useEffect(() => {
     const interval = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % typingTexts.length);
-    }, 4000); 
+    }, 4000); // Change text every 4 seconds
 
     return () => clearTimeout(interval);
   }, [currentIndex, typingTexts.length]);
-  
+
 
   return (
     <section 
@@ -128,18 +128,18 @@ const Hero: React.FC = () => {
                   
                   <div className="typing-container overflow-hidden h-14">
                   {typingTexts.map((text, index) => (
-                    <p
-                        key={index}
-                        className={`absolute whitespace-nowrap overflow-hidden border-r-2 border-primary text-sm text-gray-600 dark:text-gray-300 py-2 mb-2 transition-opacity duration-500 ease-in-out ${
-                          index === currentIndex ? "opacity-100" : "opacity-0"
-                        }`}
-                        style={{
-                          animation: index === currentIndex ? "typing 3s steps(30, end) forwards" : "none",
-                        }}
-                      >
-                        {text}
-                      </p>
-                    ))}
+        <p
+          key={index}
+          className={`absolute whitespace-nowrap overflow-hidden text-sm text-gray-600 dark:text-gray-300 py-2 mb-2 transition-opacity duration-500 ease-in-out ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            animation: index === currentIndex ? "typing 3s steps(30, end) forwards" : "none",
+          }}
+        >
+          {text}
+        </p>
+      ))}
                   </div>
                   
                   <div className="flex mt-4">
