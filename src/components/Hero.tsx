@@ -49,6 +49,14 @@ const Hero: React.FC = () => {
   }, [currentIndex, typingTexts.length]);
 
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+
   return (
     <section 
       id="home" 
@@ -89,14 +97,14 @@ const Hero: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#chat"
+                onClick={()=>{scrollToSection("chat")}}
                 className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-primary/20 hover:scale-105"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Start Chatting
               </a>
               <a
-                href="#features"
+                onClick={()=>{scrollToSection("features")}}
                 className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-full transition-all duration-300"
               >
                 Explore Features
